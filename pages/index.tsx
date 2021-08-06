@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Layout from "@components/Layout";
 import supabase from "@utils/index";
 import { useEffect, useState } from "react";
 import Login from "@components/Login";
-
-const MainPage = () => <Layout></Layout>;
+import MainPage from "@components/MainPage";
 
 const IndexPage = () => {
   const [session, setSession] = useState(null);
@@ -17,7 +14,7 @@ const IndexPage = () => {
     });
   }, []);
 
-  return <>{!session ? <Login /> : <MainPage />}</>;
+  return <>{/*!session ? <Login /> :*/ <MainPage />}</>;
 };
 
 export default IndexPage;
