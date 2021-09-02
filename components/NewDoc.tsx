@@ -25,6 +25,7 @@ const NewDoc = () => {
             alt="document image"
             loading="lazy"
             className="h-52 w-40 border-2 cursor-pointer hover:border-blue-700"
+            onClick={()=> console.log("clicked on New Doc")}
           />
         </div>
         <h2 className="text-gray-700 text-lg mt-2 ml-2 font-semibold">Blank Document</h2>
