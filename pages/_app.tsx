@@ -1,7 +1,7 @@
 import type { AppProps /*, AppContext */ } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 import "@public/styles.css";
-import "@material-tailwind/react/tailwind.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   );
 }

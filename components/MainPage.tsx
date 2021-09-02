@@ -5,8 +5,8 @@ import DocSec from "@components/DocSec";
 const MainPage = () => (
   <>
     <Navbar />
-    <NewDoc />
-    <DocSec />
+    {/* <NewDoc />
+    <DocSec /> */}
   </>
 );
 
