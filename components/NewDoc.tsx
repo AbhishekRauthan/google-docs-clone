@@ -12,8 +12,8 @@ const NewDoc = () => {
           <Flex
             align="center"
             justify="center"
-            h="md"
-            w="sm"
+            h="sm"
+            w="xs"
             rounded="md"
             backgroundColor="white"
             border="2px"

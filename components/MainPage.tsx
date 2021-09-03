@@ -6,7 +6,7 @@ const MainPage = () => (
   <>
     <Navbar />
     <NewDoc />
-    {/* <DocSec /> */} 
+    <DocSec /> 
   </>
 );
 
