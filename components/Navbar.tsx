@@ -5,9 +5,11 @@ import CustomIcon from "./CustomIcon";
 const Navbar: FC = () => (
   <>
     <Flex
+      as="nav"
       position="sticky"
       zIndex="sticky"
-      backgroundColor="gray.50"
+      backgroundColor="white"
+      boxShadow="md"
       paddingY="4"
       paddingX="16"
       align="center"
@@ -22,7 +24,7 @@ const Navbar: FC = () => (
           clipRule="evenodd"
         />
       </CustomIcon>
-      <Heading ml="2" size="lg" color="gray.700">
+      <Heading as="h1" ml="2" size="lg" color="gray.700">
         SupaDocs
       </Heading>
       <Flex
@@ -32,13 +34,12 @@ const Navbar: FC = () => (
         px="3"
         py="1"
         backgroundColor="gray.200"
-        
         borderRadius="lg"
         border="2px"
         borderColor="transparent"
         _focusWithin={{
           borderColor: "green.400",
-          shadow:"md"
+          shadow: "md",
         }}
       >
         <Input
@@ -50,12 +51,12 @@ const Navbar: FC = () => (
           border="none"
           focusBorderColor="transparent"
           _placeholder={{
-            color: "gray.400"
+            color: "gray.400",
           }}
           _focus={{
             _placeholder: {
-              color: "gray.800"
-            }
+              color: "gray.800",
+            },
           }}
         ></Input>
       </Flex>

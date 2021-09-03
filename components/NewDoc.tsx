@@ -1,36 +1,43 @@
-import Button from "@material-tailwind/react/Button";
-import Icon from "@material-tailwind/react/Icon";
+import { Box, Flex, Heading } from "@chakra-ui/react";
+import CustomIcon from "./CustomIcon";
 
 const NewDoc = () => {
   return (
-    <section className="bg=[#F8F9FA] pb-10 px-10">
-      <div className="max-w-3xl mx-auto">
-        <div className="flex items-center justify-between py-6">
-          <h2 className="text-gray-700 text-lg">Start a New Document</h2>
-
-          <Button
-            color="gray"
-            buttonType="outline"
-            rounded={true}
-            iconOnly={true}
-            ripple="dark"
-            className="h-20 w-20 border-0"
+    <>
+      <Box as="section" pb="10" px="10" backgroundColor="#F8F9FA">
+        <Box mx="auto" maxW="6xl" pl="2.5">
+          <Heading color="gray.600" size="lg" py="6">
+            Start a New Document
+          </Heading>
+          <Flex
+            align="center"
+            justify="center"
+            h="md"
+            w="sm"
+            rounded="md"
+            backgroundColor="white"
+            border="2px"
+            borderColor="transparent"
+            _hover={{
+              borderColor: "green.400",
+              cursor: "pointer",
+            }}
           >
-            <Icon name="more_vert" size="3xl" color="gray" />
-          </Button>
-        </div>
-        <div>
-          <img
-            src="https://links.papareact.com/pju"
-            alt="document image"
-            loading="lazy"
-            className="h-52 w-40 border-2 cursor-pointer hover:border-blue-700"
-            onClick={()=> console.log("clicked on New Doc")}
-          />
-        </div>
-        <h2 className="text-gray-700 text-lg mt-2 ml-2 font-semibold">Blank Document</h2>
-      </div>
-    </section>
+            <CustomIcon display="block" color="green.600" h="32" w="32">
+              <path
+                fillRule="evenodd"
+                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                clipRule="evenodd"
+                fill="currentColor"
+              />
+            </CustomIcon>
+          </Flex>
+          <Heading mt={2} ml={2} color="gray.600" size="sm">
+            Blank Document
+          </Heading>
+        </Box>
+      </Box>
+    </>
   );
 };
 
