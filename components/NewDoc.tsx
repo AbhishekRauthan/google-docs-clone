@@ -1,7 +1,24 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { useRef } from "react";
+import {
+  Box,
+  Flex,
+  Heading,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  HStack,
+} from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
 
 const NewDoc = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const fileName = useRef<HTMLInputElement>();
   return (
     <>
       <Box as="section" pb="10" px="10" backgroundColor="#F8F9FA">
@@ -22,6 +39,7 @@ const NewDoc = () => {
               borderColor: "green.400",
               cursor: "pointer",
             }}
+            onClick={onOpen}
           >
             <CustomIcon display="block" color="green.600" h="32" w="32">
               <path
@@ -32,6 +50,34 @@ const NewDoc = () => {
               />
             </CustomIcon>
           </Flex>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent my="auto">
+              <ModalBody py="4" px="3">
+                <FormControl>
+                  <FormLabel>Enter File name</FormLabel>
+                  <Input
+                    ref={fileName}
+                    placeholder="First name"
+                    _focus={{ borderColor: "green" }}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && console.log(fileName.current.value);
+                      onClose();
+                    }}
+                  />
+                </FormControl>
+                <HStack mt="3" mr="3" spacing="4">
+                  <Button
+                    colorScheme="green"
+                    onClick={() => console.log(fileName.current.value)}
+                  >
+                    Save
+                  </Button>
+                  <Button onClick={onClose}>Cancel</Button>
+                </HStack>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
           <Heading mt={2} ml={2} color="gray.600" size="sm">
             Blank Document
           </Heading>
