@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useRouter } from "next/router";
 import {
   Box,
   Flex,
@@ -19,6 +20,13 @@ import CustomIcon from "./CustomIcon";
 const NewDoc = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const fileName = useRef<HTMLInputElement>();
+  const router = useRouter();
+
+  function createFile(fileName: string) {
+    console.log(fileName);
+    router.push(`edit/${fileName}`);
+  }
+
   return (
     <>
       <Box as="section" pb="10" px="10" backgroundColor="#F8F9FA">
@@ -61,15 +69,17 @@ const NewDoc = () => {
                     placeholder="First name"
                     _focus={{ borderColor: "green" }}
                     onKeyDown={(e) => {
-                      e.key === "Enter" && console.log(fileName.current.value);
-                      onClose();
+                      if (e.key === "Enter") {
+                        createFile(fileName.current.value);
+                        onClose();
+                      }
                     }}
                   />
                 </FormControl>
                 <HStack mt="3" mr="3" spacing="4">
                   <Button
                     colorScheme="green"
-                    onClick={() => console.log(fileName.current.value)}
+                    onClick={() => createFile(fileName.current.value)}
                   >
                     Save
                   </Button>
