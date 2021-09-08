@@ -7,7 +7,7 @@ const Navbar: FC = () => (
     <Flex
       as="nav"
       position="sticky"
-      zIndex="sticky"
+      zIndex={2}
       backgroundColor="white"
       boxShadow="md"
       paddingY="4"

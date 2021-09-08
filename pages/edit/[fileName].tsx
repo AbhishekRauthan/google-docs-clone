@@ -21,6 +21,7 @@ const toolbarStyle = css`
   background-color: white;
   position: sticky;
   top: 0;
+  z-index: 1;
   box-shadow: 0px 1px 29px -10px rgba(0,0,0,0.93);
 `;
 
@@ -46,7 +47,7 @@ const FileEditor = () => {
   return (
     <>
       <Navbar />
-      <Box bgColor="gray" pb="3">
+      <Box bgColor="gray" pb="3" pos="relative">
         <Editor
           editorState={editorState}
           onEditorStateChange={onEditorStateChange}

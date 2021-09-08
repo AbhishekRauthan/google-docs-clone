@@ -6,7 +6,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Session } from "@supabase/supabase-js";
 
 interface Props {
-  session:Session
+  session: Session;
 }
 
 const IndexPage = ({
