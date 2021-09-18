@@ -22,7 +22,7 @@ const IndexPage = ({
     });
   }, []);
 
-  return <>{/*!session ? <Login /> :*/ <MainPage />}</>;
+  return <>{/*!session ?*/ <Login /> /*: <MainPage />*/}</>;
 };
 
 export default IndexPage;

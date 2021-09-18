@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import { Flex, Heading, Input } from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
 
@@ -25,7 +26,7 @@ const Navbar: FC = () => (
         />
       </CustomIcon>
       <Heading as="h1" ml="2" size="lg" color="gray.700">
-        SupaDocs
+        <Link href="/">SupaDocs</Link>
       </Heading>
       <Flex
         grow={1}

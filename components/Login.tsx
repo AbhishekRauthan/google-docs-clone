@@ -1,11 +1,45 @@
 import supabase from "@utils/index";
-import { VStack, Heading, Button } from "@chakra-ui/react";
+import {
+  VStack,
+  Heading,
+  Button,
+  ButtonProps,
+  Text,
+  Input,
+} from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
+import { FC, useRef } from "react";
+
+const LoginButton: FC<ButtonProps> = ({ children, ...rest }) => {
+  return (
+    <Button
+      bgColor="green.400"
+      _hover={{
+        bgColor: "green.600",
+        color: "white",
+        shadow: "xl",
+      }}
+      {...rest}
+    >
+      {children}
+    </Button>
+  );
+};
 
 const Login = () => {
+  const emailInp = useRef<HTMLInputElement>();
+  const passInp = useRef<HTMLInputElement>();
+
   async function signInWithGoogle() {
     const { user, session, error } = await supabase.auth.signIn({
       provider: "google",
+    });
+  }
+
+  async function signInWithEmail() {
+    const { user, session, error } = await supabase.auth.signIn({
+      email: emailInp.current.value,
+      password: passInp.current.value,
     });
   }
 
@@ -18,7 +52,6 @@ const Login = () => {
         mx="auto"
         h="90vh"
         w="50%"
-        mt="5"
         spacing="5"
       >
         <CustomIcon h="56" w="56" color="green.500">
@@ -32,39 +65,28 @@ const Login = () => {
         <Heading as="h1" color="gray.600" fontSize="4xl">
           SupaDocs
         </Heading>
-        <Button
-          bgColor="green.400"
-          onClick={signInWithGoogle}
-          _hover={{
-            bgColor: "green.600",
-            color: "white",
-            shadow: "xl"
-            
-          }}
-        >
-          Login with Google
-        </Button>
+        <LoginButton onClick={signInWithGoogle}>Login with Google</LoginButton>
+        <Text as="h4" fontSize="xl" textTransform="capitalize">
+          or Login using email
+        </Text>
+        <VStack mt="6" spacing="6">
+          <Input
+            variant="flushed"
+            type="email"
+            placeholder="Email"
+            ref={emailInp}
+          />
+          <Input
+            variant="flushed"
+            type="password"
+            placeholder="Password"
+            ref={passInp}
+          />
+          <LoginButton onClick={signInWithEmail}>Login with Email</LoginButton>
+        </VStack>
       </VStack>
     </>
   );
 };
 
 export default Login;
-
-{
-  /* <div className="flex flex-col mx-auto h-[90vh] w-[50%] items-center justify-center">
-<Icon name="description" color="lightBlue" size="9xl" />
-<h1 className="text-gray-500 text-4xl font-mono font-extralight pt-3">
-  <span className="font-semibold">Google</span> Docs
-</h1>
-<Button
-  className="w-44 mt-10"
-  color="blue"
-  buttonType="filled"
-  ripple="light"
-  onClick={signInWithGoogle}
->
-  Login
-</Button>
-</div> */
-}

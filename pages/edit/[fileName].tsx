@@ -35,7 +35,6 @@ const editorStyle = css`
   padding: 4rem;
   height: 96vh;
   width: 50%;
-  
 `;
 
 const FileEditor = () => {
