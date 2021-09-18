@@ -12,7 +12,7 @@ interface Props {
 const IndexPage = ({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [, setSession] = useState(null);
+  const [loginSession, setSession] = useState(null);
 
   useEffect(() => {
     setSession(session);
@@ -22,7 +22,7 @@ const IndexPage = ({
     });
   }, []);
 
-  return <>{/*!session ?*/ <Login /> /*: <MainPage />*/}</>;
+  return <>{!loginSession ? <Login /> : <MainPage />}</>;
 };
 
 export default IndexPage;
