@@ -6,6 +6,8 @@ import {
   ButtonProps,
   Text,
   Input,
+  Box,
+  Stack,
 } from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
 import { FC, useRef } from "react";
@@ -45,38 +47,56 @@ const Login = () => {
 
   return (
     <>
-      <VStack
+      <Stack
         as="section"
         display="flex"
         justify="center"
+        alignItems="center"
         mx="auto"
         h="90vh"
-        w="50%"
-        spacing="5"
+        w={["50%", "90%"]}
+        spacing="8"
+        direction={["column", "row"]}
       >
-        <CustomIcon h="56" w="56" color="green.500">
-          <path
-            fillRule="evenodd"
-            fill="currentColor"
-            d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-            clipRule="evenodd"
-          />
-        </CustomIcon>
-        <Heading as="h1" color="gray.600" fontSize="4xl">
-          SupaDocs
-        </Heading>
-        <LoginButton onClick={signInWithGoogle}>Login with Google</LoginButton>
-        <Text as="h4" fontSize="xl" textTransform="capitalize">
-          or Login using email
-        </Text>
-        <VStack mt="6" spacing="6">
+        <VStack spacing="6">
+          <CustomIcon h="56" w="56" color="green.500">
+            <path
+              fillRule="evenodd"
+              fill="currentColor"
+              d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+              clipRule="evenodd"
+            />
+          </CustomIcon>
+          <Heading as="h1" color="gray.600" fontSize="4xl">
+            SupaDocs
+          </Heading>
+          <LoginButton onClick={signInWithGoogle}>
+            Login with Google
+          </LoginButton>
+        </VStack>
+        <Box
+          as="span"
+          bg="green.400"
+          my="auto"
+          mx={["0", "30"]}
+          w={["100%", "0.5"]}
+          h={[0.125, "60%"]}
+          rounded="xl"
+        />
+
+        <VStack spacing="6">
+          <Text as="h4" fontSize="xl" textTransform="capitalize">
+            or Login using email
+          </Text>
           <Input
+            focusBorderColor="green.400"
             variant="flushed"
             type="email"
             placeholder="Email"
             ref={emailInp}
           />
           <Input
+            focusBorderColor="green.400"
             variant="flushed"
             type="password"
             placeholder="Password"
@@ -84,7 +104,7 @@ const Login = () => {
           />
           <LoginButton onClick={signInWithEmail}>Login with Email</LoginButton>
         </VStack>
-      </VStack>
+      </Stack>
     </>
   );
 };
