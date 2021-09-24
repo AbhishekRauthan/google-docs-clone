@@ -8,6 +8,8 @@ import {
   Input,
   Box,
   Stack,
+  useToast,
+  useOutsideClick,
 } from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
 import { FC, useRef } from "react";
@@ -29,8 +31,15 @@ const LoginButton: FC<ButtonProps> = ({ children, ...rest }) => {
 };
 
 const Login = () => {
+  const toast = useToast();
+  const toastRef = useRef<string | number>();
   const emailInp = useRef<HTMLInputElement>();
   const passInp = useRef<HTMLInputElement>();
+
+  // useOutsideClick({
+  //   ref: toastRef,
+  //   handler: () =>  toast.closeAll()
+  // })
 
   async function signInWithGoogle() {
     const { user, session, error } = await supabase.auth.signIn({
@@ -43,6 +52,15 @@ const Login = () => {
       email: emailInp.current.value,
       password: passInp.current.value,
     });
+
+    if (error) {
+      toastRef.current = toast({
+        status: "error",
+        title: "Error",
+        description: "Something went wrong",
+        isClosable:true
+      });
+    }
   }
 
   return (
@@ -53,7 +71,8 @@ const Login = () => {
         justify="center"
         alignItems="center"
         mx="auto"
-        h="90vh"
+        mt="20"
+        h="80vh"
         w={["50%", "90%"]}
         spacing="8"
         direction={["column", "row"]}
