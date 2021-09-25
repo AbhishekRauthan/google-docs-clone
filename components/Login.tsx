@@ -9,10 +9,11 @@ import {
   Box,
   Stack,
   useToast,
-  useOutsideClick,
 } from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
 import { FC, useRef } from "react";
+import Link from "next/link";
+import { css } from "@emotion/css";
 
 const LoginButton: FC<ButtonProps> = ({ children, ...rest }) => {
   return (
@@ -30,16 +31,26 @@ const LoginButton: FC<ButtonProps> = ({ children, ...rest }) => {
   );
 };
 
+const hoverEffect = css`
+  ::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px #48BB78;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+
+  :hover:after {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+  }
+`;
+
 const Login = () => {
   const toast = useToast();
   const toastRef = useRef<string | number>();
   const emailInp = useRef<HTMLInputElement>();
   const passInp = useRef<HTMLInputElement>();
-
-  // useOutsideClick({
-  //   ref: toastRef,
-  //   handler: () =>  toast.closeAll()
-  // })
 
   async function signInWithGoogle() {
     const { user, session, error } = await supabase.auth.signIn({
@@ -58,7 +69,7 @@ const Login = () => {
         status: "error",
         title: "Error",
         description: "Something went wrong",
-        isClosable:true
+        isClosable: true,
       });
     }
   }
@@ -71,8 +82,7 @@ const Login = () => {
         justify="center"
         alignItems="center"
         mx="auto"
-        mt="20"
-        h="80vh"
+        pt={["32", "32", "44"]}
         w={["50%", "90%"]}
         spacing="8"
         direction={["column", "row"]}
@@ -99,17 +109,24 @@ const Login = () => {
           my="auto"
           mx={["0", "30"]}
           w={["100%", "0.5"]}
-          h={[0.125, "60%"]}
+          h={[0.125, "xl"]}
           rounded="xl"
         />
 
-        <VStack spacing="6">
-          <Text as="h4" fontSize="xl" textTransform="capitalize">
+        <VStack spacing="6" pl={{ base: 0, md: "4", lg: "10" }}>
+          <Text
+            as="h4"
+            fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+            textTransform="capitalize"
+          >
             or Login using email
           </Text>
           <Input
             focusBorderColor="green.400"
             variant="flushed"
+            w={"120%"}
+            display="block"
+            fontSize={{ base: "lg", md: "xl" }}
             type="email"
             placeholder="Email"
             ref={emailInp}
@@ -117,6 +134,9 @@ const Login = () => {
           <Input
             focusBorderColor="green.400"
             variant="flushed"
+            w={"120%"}
+            display="block"
+            fontSize={{ base: "lg", md: "xl" }}
             type="password"
             placeholder="Password"
             ref={passInp}
@@ -124,6 +144,26 @@ const Login = () => {
           <LoginButton onClick={signInWithEmail}>Login with Email</LoginButton>
         </VStack>
       </Stack>
+
+      <Text
+        as="h6"
+        fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+        mt="7"
+        textTransform="capitalize"
+        textAlign="center"
+      >
+        first timer? then{" "}
+        <Text
+          as="span"
+          display="inline-block"
+          bgGradient="linear(to-r, teal.400, green.600)"
+          bgClip="text"
+          fontWeight="bold"
+          className={hoverEffect}
+        >
+          <Link href="/signup">sign up</Link>
+        </Text>
+      </Text>
     </>
   );
 };
