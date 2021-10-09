@@ -1,35 +1,11 @@
 import supabase from "@utils/index";
-import {
-  VStack,
-  Heading,
-  Button,
-  ButtonProps,
-  Text,
-  Input,
-  Box,
-  Stack,
-  useToast,
-} from "@chakra-ui/react";
+import { VStack, Heading, Text, Box, Stack, useToast } from "@chakra-ui/react";
 import CustomIcon from "./CustomIcon";
-import { FC, useRef } from "react";
+import Input from "./Input";
+import Button from "./Button";
+import { useRef } from "react";
 import Link from "next/link";
 import { css } from "@emotion/css";
-
-const LoginButton: FC<ButtonProps> = ({ children, ...rest }) => {
-  return (
-    <Button
-      bgColor="green.400"
-      _hover={{
-        bgColor: "green.600",
-        color: "white",
-        shadow: "xl",
-      }}
-      {...rest}
-    >
-      {children}
-    </Button>
-  );
-};
 
 const hoverEffect = css`
   ::after {
@@ -68,22 +44,25 @@ const Login = () => {
       toastRef.current = toast({
         status: "error",
         title: "Error",
-        description: "Something went wrong",
+        description: "Something went wrong with login! Please try again",
         isClosable: true,
       });
     }
   }
 
   return (
-    <>
+    <Stack
+      h={"100vh"}
+      direction="column"
+      as="section"
+      d="grid"
+      placeContent="center"
+    >
       <Stack
         as="section"
         display="flex"
         justify="center"
         alignItems="center"
-        mx="auto"
-        pt={["32", "32", "44"]}
-        w={["50%", "90%"]}
         spacing="8"
         direction={["column", "row"]}
       >
@@ -99,9 +78,7 @@ const Login = () => {
           <Heading as="h1" color="gray.600" fontSize="4xl">
             SupaDocs
           </Heading>
-          <LoginButton onClick={signInWithGoogle}>
-            Login with Google
-          </LoginButton>
+          <Button onClick={signInWithGoogle}>Login with Google</Button>
         </VStack>
         <Box
           as="span"
@@ -121,27 +98,9 @@ const Login = () => {
           >
             or Login using email
           </Text>
-          <Input
-            focusBorderColor="green.400"
-            variant="flushed"
-            w={"120%"}
-            display="block"
-            fontSize={{ base: "lg", md: "xl" }}
-            type="email"
-            placeholder="Email"
-            ref={emailInp}
-          />
-          <Input
-            focusBorderColor="green.400"
-            variant="flushed"
-            w={"120%"}
-            display="block"
-            fontSize={{ base: "lg", md: "xl" }}
-            type="password"
-            placeholder="Password"
-            ref={passInp}
-          />
-          <LoginButton onClick={signInWithEmail}>Login with Email</LoginButton>
+          <Input type="email" placeholder="Email" ref={emailInp} />
+          <Input type="password" placeholder="Password" ref={passInp} />
+          <Button onClick={signInWithEmail}>Login with Email</Button>
         </VStack>
       </Stack>
 
@@ -152,7 +111,7 @@ const Login = () => {
         textTransform="capitalize"
         textAlign="center"
       >
-        first timer? then{" "}
+        first time using this? then{" "}
         <Text
           as="span"
           display="inline-block"
@@ -164,7 +123,7 @@ const Login = () => {
           <Link href="/signup">sign up</Link>
         </Text>
       </Text>
-    </>
+    </Stack>
   );
 };
 
