@@ -2,7 +2,7 @@ import { Button as ChakraButton, ButtonProps } from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, ...rest }) => {
+  ({ children, ...rest }, ref) => {
     return (
       <ChakraButton
         bgColor="green.400"
@@ -11,6 +11,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           color: "white",
           shadow: "xl",
         }}
+        ref={ref}
         {...rest}
       >
         {children}

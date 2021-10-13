@@ -5,7 +5,7 @@ import {
 } from "@chakra-ui/react";
 
 const Input = forwardRef<HTMLInputElement, ChakraInputProps>(
-  ({ children, ...rest }) => {
+  ({ children, ...rest }, ref) => {
     return (
       <ChakraInput
         focusBorderColor="green.400"
@@ -13,6 +13,7 @@ const Input = forwardRef<HTMLInputElement, ChakraInputProps>(
         w={"120%"}
         display="block"
         fontSize={{ base: "lg", md: "xl" }}
+        ref={ref}
         {...rest}
       >
         {children}
