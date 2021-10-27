@@ -78,7 +78,9 @@ const Login = () => {
           <Heading as="h1" color="gray.600" fontSize="4xl">
             SupaDocs
           </Heading>
-          <Button onClick={signInWithGoogle}>Login with Google</Button>
+          <Button buttonVariant="primary" onClick={signInWithGoogle}>
+            Login with Google
+          </Button>
         </VStack>
         <Box
           as="span"
@@ -98,9 +100,16 @@ const Login = () => {
           >
             or Login using email
           </Text>
-          <Input type="email" placeholder="Email" ref={emailInp} />
-          <Input type="password" placeholder="Password" ref={passInp} />
-          <Button onClick={signInWithEmail}>Login with Email</Button>
+          <Input type="email" placeholder="Email" ref={emailInp} w={"120%"} />
+          <Input
+            type="password"
+            placeholder="Password"
+            ref={passInp}
+            w={"120%"}
+          />
+          <Button buttonVariant="primary" onClick={signInWithEmail}>
+            Login with Email
+          </Button>
         </VStack>
       </Stack>
 
