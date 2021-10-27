@@ -1,4 +1,4 @@
-import { VStack, Heading, useToast } from "@chakra-ui/react";
+import { VStack, Heading, useToast, Box } from "@chakra-ui/react";
 import Button from "@components/Button";
 import CustomIcon from "@components/CustomIcon";
 import Input from "@components/Input";
@@ -59,7 +59,7 @@ const SignUp = ({
           <Heading as="h2" color="gray.600" fontSize="2xl">
             You are already logged in.
           </Heading>
-          <Button>
+          <Button buttonVariant="primary">
             <Link href="/">Goto main page</Link>
           </Button>
         </>
@@ -72,9 +72,11 @@ const SignUp = ({
             placeholder="Confirm Password"
             ref={repPassInp}
           />
-          <Button marginX="auto" onClick={signUpWithEmail}>
-            Sign Up
-          </Button>
+          <Box display="flex" justifyContent="center">
+            <Button buttonVariant="secondary" onClick={signUpWithEmail}>
+              Sign Up
+            </Button>
+          </Box>
         </>
       )}
     </VStack>
