@@ -42,7 +42,7 @@ const SignUp = ({
       spacing="5"
       textAlign="center"
     >
-      <CustomIcon h="56" w="56" color="green.500">
+      <CustomIcon h="56" w="56" color="green.500" mx="auto">
         <path
           fillRule="evenodd"
           fill="currentColor"
