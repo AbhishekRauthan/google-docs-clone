@@ -12,6 +12,9 @@ const Input = forwardRef<HTMLInputElement, ChakraInputProps>(
         variant="flushed"
         display="block"
         fontSize={{ base: "lg", md: "xl" }}
+        _placeholder={{
+          color: "gray.800",
+        }}
         ref={ref}
         {...rest}
       >
