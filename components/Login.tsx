@@ -115,22 +115,21 @@ const Login = () => {
 
       <Text
         as="h6"
+        display="block"
         fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
         mt="7"
         textTransform="capitalize"
         textAlign="center"
       >
         first time using this? then{" "}
-        <Text
-          as="span"
-          display="inline-block"
-          bgGradient="linear(to-r, teal.400, green.600)"
-          bgClip="text"
-          fontWeight="bold"
-          className={hoverEffect}
+        <Button
+          display="inline"
+          buttonVariant="secondary"
+          fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+          p="2"
         >
-          <Link href="/signup">sign up</Link>
-        </Text>
+          <Link href="/signup">Sign up</Link>
+        </Button>
       </Text>
     </Stack>
   );
