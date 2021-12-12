@@ -11,7 +11,7 @@ const hoverEffect = css`
   ::after {
     display: block;
     content: "";
-    border-bottom: solid 3px #48BB78;
+    border-bottom: solid 3px #48bb78;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
   }
@@ -122,14 +122,16 @@ const Login = () => {
         textAlign="center"
       >
         first time using this? then{" "}
-        <Button
-          display="inline"
-          buttonVariant="secondary"
-          fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
-          p="2"
-        >
-          <Link href="/signup">Sign up</Link>
-        </Button>
+        <Link href="/signup">
+          <Button
+            display="inline"
+            buttonVariant="secondary"
+            fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+            p="2"
+          >
+            Sign up
+          </Button>
+        </Link>
       </Text>
     </Stack>
   );

@@ -59,9 +59,9 @@ const SignUp = ({
           <Heading as="h2" color="gray.600" fontSize="2xl">
             You are already logged in.
           </Heading>
-          <Button buttonVariant="primary">
-            <Link href="/">Goto main page</Link>
-          </Button>
+          <Link href="/">
+            <Button buttonVariant="primary">Goto main page</Button>
+          </Link>
         </>
       ) : (
         <>
@@ -89,16 +89,18 @@ const SignUp = ({
             justifyContent="center"
             alignItems="center"
           >
-            <Text >
+            <Text>
               Already a User? Then{" "}
-              <Button
-                display="inline"
-                buttonVariant="secondary"
-                fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
-                p="2"
-              >
-                <Link href="/">Login</Link>
-              </Button>
+              <Link href="/">
+                <Button
+                  display="inline"
+                  buttonVariant="secondary"
+                  fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+                  p="2"
+                >
+                  Login
+                </Button>
+              </Link>
             </Text>
           </Box>
         </>
